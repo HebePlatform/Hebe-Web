@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>团队 - HebeBlock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HebeBlock 聚焦区块链长尾市场──构建多维 Token 经济生态群落"/>
+    <meta name="keywords" content="HebeBlock, Hebe, Pos, 区块链, 去中心化资产交易所, 别名, 帐号控制，去中心化数据存储系统，去中心投票系统，去中心化的匿名隐私"/>
+    <meta name="author" content="Hebeblock@Gmail.Com"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:image" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet'
+          type='text/css'>
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.fallingsnow.css">
+    <link rel="stylesheet" href="css/myfallingsnow.css">
+    <link rel="stylesheet" href="css/timeline.css">
+
+    <link rel="stylesheet" id="theme-switch" href="css/style.css">
+
+
+    <style>
+        #colour-variations {
+            padding: 10px;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            width: 140px;
+            position: fixed;
+            left: 0;
+            top: 100px;
+            z-index: 999999;
+            background: #fff;
+            /*border-radius: 4px;*/
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -webkit-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -moz-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -ms-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+        }
+
+        #colour-variations.sleep {
+            margin-left: -140px;
+        }
+
+        #colour-variations h3 {
+            text-align: center;;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+            margin: 0 0 10px 0;
+            padding: 0;;
+        }
+
+        #colour-variations ul,
+        #colour-variations ul li {
+            padding: 0;
+            margin: 0;
+        }
+
+        #colour-variations li {
+            list-style: none;
+            display: block;
+            margin-bottom: 5px !important;
+            float: left;
+            width: 100%;
+        }
+
+        #colour-variations li a {
+            width: 100%;
+            position: relative;
+            display: block;
+            overflow: hidden;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-transition: 0.4s;
+            -o-transition: 0.4s;
+            transition: 0.4s;
+        }
+
+        #colour-variations li a:hover {
+            opacity: .9;
+        }
+
+        #colour-variations li a > span {
+            width: 33.33%;
+            height: 20px;
+            float: left;
+            display: -moz-inline-stack;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+        }
+
+
+        .option-toggle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-top: 5px;
+            margin-right: -30px;
+            width: 30px;
+            height: 30px;
+            background: #f64662;
+            text-align: center;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            -webkit-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -moz-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -ms-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+        }
+
+        .option-toggle i {
+            top: 2px;
+            position: relative;
+        }
+
+        .option-toggle:hover,
+        .option-toggle:focus,
+        .option-toggle:active {
+            color: #fff;
+            text-decoration: none;
+            outline: none;
+        }
+
+        h2:after {
+            background: #fff !important;
+        }
+
+        p {
+            color: #fff;
+        }
+
+        #fh5co-services:before, #fh5co-services:after {
+            height: auto !important;
+        }
+        .social-circle a{
+            background: #fff !important;
+            color: #2196f3 !important;
+        }
+        .fh5co-person {
+            border: none;
+        }
+        .fh5co-position{
+            color: #fff !important;
+        }
+        #footer {
+            padding: 50px 0;
+            color: #7f7f7f !important;
+            position: relative;
+        }
+    </style>
+
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<header role="banner" id="fh5co-header">
+    <div class="container">
+        <!-- <div class="row"> -->
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <!-- Mobile Toggle Menu Button -->
+                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse"
+                   data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                <a class="navbar-brand" href="index.html">
+                    <img class="logo1" src="./images/logo.png" style="float: left;    margin-top: -10px;">
+                    <img class="logo2" src="./images/logo1.png" style="float: left;    margin-top: -10px;">
+                    HebeBlock
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="./zh.html" target="_blank"><span>主页</span></a></li>
+                    <li><a href="./serviceszh.html" target="_blank"><span>功能</span></a></li>
+                    <li><a href="./teamzh.html" target="_blank"><span>团队</span></a></li>
+                    <li><a href="https://blog.hebeblock.com/" target="_blank"><span>博客</span></a></li>
+                    <li><a href="https://d.hebeblock.com/" target="_blank"><span>手机钱包</span></a></li>
+                    <li><a href="https://block.hebeblock.com/" target="_blank"><span>浏览器</span></a></li>
+                    <li><a href="./zh.html" target="_blank"><span>交易所</span></a></li>
+                    <li><a href="#" data-nav-section="contact"><span>联系我们</span></a></li>
+                    <li><a href="./index.html" target="_blank"><span>EN</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- </div> -->
+    </div>
+</header>
+
+
+<section id="fh5co-services" data-section="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-heading text-center">
+                <h2 class="to-animate">团队</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                        <h3></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="fh5co-person text-center to-animate">
+                    <figure><img src="images/zhang.jpg" alt="Image"></figure>
+                    <h3>Zhang</h3>
+                    <span style="color: #fff" class="fh5co-position">全栈开发工程师</span>
+                    <p>HebeWallet，Walletnxt钱包创始人，具有丰富的区块链/钱包开发经验，擅长javascript,Java,Nodejs开发，曾参与Nxt，Ardor客户端开发，Cosmos
+                        JsSdk开发，专注于Proof-of-Stake项目开发和研究。</p>
+                    <ul class="social social-circle">
+                        <li><a target="_blank" href="https://twitter.com/zhanghuasheng95"><i
+                                class="icon-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://github.com/317482454"><i class="icon-github"></i></a>
+                        </li>
+                        <li><a target="_blank"  href="https://blog.csdn.net/qq_26744901"><i
+                                class="icon-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="fh5co-person text-center to-animate">
+                    <figure><img src="images/jun.jpg" alt="Image"></figure>
+                    <h3>Tvrosina</h3>
+                    <span class="fh5co-position">系统管理员/IT专家</span>
+                    <p>Fido Junes
+                        计算机技术专业人士，精通嵌入式设备节点的布置，以及linux操作系统网络维护。曾带领团队给中国电信华东地区网络通信的优化。HEBE社群，基金创始人，早期BTC,ETH的投资者。国内知名区块链媒体专栏作者，专注于大数据以及相关技术研究与实践。
+                    </p>
+                    <ul class="social social-circle">
+                        <li><a target="_blank" href="https://twitter.com/fj27074122"><i
+                                class="icon-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="fh5co-person text-center to-animate">
+                    <figure><img src="images/xun.jpg" alt="Image"></figure>
+                    <h3>团子</h3>
+                    <span class="fh5co-position">运营推广</span>
+                    <p>HEBE狂热粉丝，区块链信仰者，区块链从业者，媒体专栏作者，市场营销全领域工作经验，深入研究营销超千小时，拥有丰富的项目实操运营经验，曾负责国内一家知名区块链媒体运营工作。</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 120px">
+            <div class="col-md-4">
+                <div class="fh5co-person text-center to-animate">
+                    <figure><img src="images/cc.jpg" alt="Image"></figure>
+                    <h3>CC</h3>
+                    <span class="fh5co-position">Java架构设计师</span>
+                    <p>多年JAVA企业应用开发经验,专注高并发和大数据分析,带领团队为政府,银行,互联网公司进行流程化服务,参与SEVC产权交易市场的开发和设计。主导HEBE中心化交易所的开发和设计。
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="fh5co-person text-center to-animate">
+                    <figure><img src="images/gaken.jpg" alt="Image"></figure>
+                    <h3>Gaken</h3>
+                    <span class="fh5co-position">策划推广</span>
+                    <p>
+                        HEBE的拥趸粉丝，区块链传道者，广告行业草根，
+                        2013年懵懂接触区块链浅尝辄止，错过了很多！直到2017年后深入了解，坚信区块链技术是改革促进人类进步的新方向。初期接触的NXT，再到凤凰涅槃而生的HEBE功能开发，深深印证HEBE的未来之路可塑性。
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="fh5co-contact" data-section="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-heading text-center">
+                <h2 class="to-animate">联系我们</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-bottom-padded-md">
+            <div class="col-md-12 to-animate">
+                <ul class="fh5co-contact-info">
+                    <li><a href="mailto:hebeblock@gmail.com" target="_blank"><i
+                            class="icon-envelope"></i>hebeblock@gmail.com</a>
+                    </li>
+                    <li>
+                        <a href="https://t.me/joinchat/HwKr5xDvq9dB3Us860p6hg"
+                           target="_blank"><i class="icon-television"></i>Telegram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://join.slack.com/t/hebeblock/shared_invite/enQtMzk5NzM1OTk4MzA3LWNlZjgxOTUzYmZiZmVmMDQ3MGZlMTA5Y2I3NjY2NjAyYWY5YWRhZDdhMGI3MmRmN2FjMmQxYzg1MTFiMGMzOGE"
+                           target="_blank"><i class="icon-slack"></i>Slack
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://91solian.com"
+                           target="_blank"><i class="icon-wallet"></i>
+                            Hebe Wallet
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://91solian.com"
+                           target="_blank"><i class="icon-share-alt"></i>91solian
+                        </a>
+                    </li>
+
+                    <li><a href="#"><i class="icon-share-alt"></i>公众号:HebeChain</a></li>
+                    <li><a href="#"><i class="icon-share-alt"></i>微信号:HebeBlockWx</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer id="footer" role="contentinfo">
+    <a href="#" class="gotop js-gotop"><i class="icon-arrow-up2"></i></a>
+    <div class="container">
+        <div class="">
+            <div class="col-md-12 text-center">
+                <p style="color: #7f7f7f;" >© 2019 HebeBlock All Right Reserved
+                    <br>Created by <a href="https://HebeBlock.com/" target="_blank">HebeBlock</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="social social-circle">
+                    <li><a style="    background: #2196f3 !important;
+    color: #fff !important;" href="https://twitter.com/BlockHebe" target="_blank"><i class="icon-twitter"></i></a>
+                    </li>
+                    <li><a style="    background: #2196f3 !important;
+    color: #fff !important;" href="https://weibo.com/p/1005055200291135/home?profile_ftype=1&is_hot=1#_0" target="_blank"><i
+                            class="icon-weibo"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- For demo purposes Only ( You may delete this anytime :-) -->
+
+<!-- End demo purposes only -->
+
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Stellar Parallax -->
+<script src="js/jquery.stellar.min.js"></script>
+<!-- Counter -->
+<script src="js/jquery.countTo.js"></script>
+<!-- Magnific Popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
+<script src="js/jquery.fallingsnow.min.js"></script>
+
+
+<!-- Main JS (Do not remove) -->
+<script src="js/main.js?data=2019-4-23"></script>
+<script
+        src="https://jic.talkingdata.com/app/h5/v1?appid=6E6131607DD4415FAD006A19A6AF4AA8&vn=HebeBlock&vc=1.0"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145401219-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-145401219-1');
+
+</script>
+
+</body>
+
+</html>

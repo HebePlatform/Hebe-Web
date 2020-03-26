@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>来自HebeBlock的红包</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body,
+        dl, dt, dd, ul, ol, li,
+        h1, h2, h3, h4, h5, h6,
+        pre, code, form, fieldset, legend, input, textarea,
+        p, blockquote, th, td, hr, button,
+        article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        /* 默认不要下划线 */
+        a {
+            text-decoration: none;
+        }
+
+        /* 按钮文本不可选 */
+        button {
+            user-select: none;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        /* 加载不出来的图片不要显示灰色边框 */
+        img:not([src]), img[src=""] {
+            opacity: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        input, select, button, textarea {
+            font-size: 100%;
+            font: inherit;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            background-color: #c40000;
+            overflow-scrolling: touch;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: rotate(2deg) translate3d(0, 0, 0)
+            }
+
+            50% {
+                transform: rotate(-2deg) translate3d(0, 0, 0)
+            }
+
+            100% {
+                transform: rotate(2deg) translate3d(0, 0, 0)
+            }
+        }
+
+        .shake {
+            animation: shake .2s infinite linear;
+            -webkit-animation: shake .2s infinite linear;
+        }
+
+        #app {
+            display: none;
+        }
+
+        .order {
+            width: 92%;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 10px;
+            border-top: 1px solid #ffffff;
+            position: relative;
+            height: 14px;
+        }
+
+        .order .txt {
+            color: #fff;
+            position: absolute;
+            top: -6px;
+            background-color: #c40000;
+            padding: 0 6px;
+            margin: auto;
+        }
+
+
+    </style>
+</head>
+<body>
+<div v-bind:style="{ display: active}" id="app">
+    <div v-if="cover"
+         style="position: fixed;z-index: 2;top: 0;background: #000;height: 100%;width: 100%;opacity: .4"></div>
+    <div v-if="hb" @click="shakeFn" v-bind:class="{ shake: isActive }" style="width: 300px;
+    z-index: 2;
+    height: 345px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 20px #666;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    margin-left: -150px;
+    margin-top: -172px;
+    transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;">
+        <img style="width: 100%" src="hb.png">
+    </div>
+    <img src="hbb.gif" style="width: 100%">
+    <div v-if="!isLogin" style="width: 100%;padding: 20px;">
+        <div style="height: 100%;width: 100%;
+        background-color: rgba(255 ,255 ,255, 0.15);
+        border-radius: 4px;text-align:center">
+            <div v-if="model.list" style="padding-top: 20px;font-size: 18px;color: #fff;">
+                来自{{model.list.txt}}的拼手气红包
+            </div>
+            <div style="padding-top: 8px;font-size: 14px;color: #fff;">
+                输入别名/地址领取
+            </div>
+            <input v-model="txt" @blur="txtBlurFn"
+                   style="margin-top: 14px;text-indent: 10px;font-size: 14px;width: 70%;height: 34px;border-radius: 4px"
+                   type="text" placeholder="请输入别名/地址领取"/>
+
+            <input @click="loot" v-bind:style="{ backgroundColor: button}" style="color: #fff;
+            margin-top: 14px;margin-bottom: 20px;text-indent: 10px;font-size: 14px;width: 70%;height: 34px;border-radius: 4px"
+                   type="button" value="领取红包"/>
+        </div>
+    </div>
+
+
+    <div v-if="isLogin" style="width: 100%;padding: 20px; ">
+        <div style="height: 100%;width: 100%;
+        background-color: rgba(0 ,0 ,0, 0.1);
+        border-radius: 4px;">
+            <div style="height: 120px;width: 100%;padding: 20px;padding-bottom: 14px">
+                <div style="height: 100%;width: 100%;background: #fff;border-radius: 2px">
+                    <div style="margin-left: 20px;margin-right: 10px;position: relative">
+                        <div style="color: #ff274a;font-size: 24px;margin-top: 12px;float: left">
+                            {{detail.sum}}
+                            <div style="margin: 0 auto;border-radius: 2px;font-size: 12px;line-height: 20px;text-align: center;background: #2196f3;width: 60px;height: 20px;color: #fff">
+                                Hebe
+                            </div>
+                        </div>
+                        <ul style="width: 100px;margin: 0 auto;color: #999999;font-size: 12px;padding-top: 24px;">
+                            <li>满100即可提现</li>
+                            <li v-if="detail.createAt">{{formatDateTime2(detail.createAt)}}
+                            </li>
+
+                        </ul>
+                        <div style="top: 0;;position: absolute;right: 0;margin-top: 22px;line-height: 32px;font-size: 12px;width: 80px;height: 32px;background: #ff274a;border-radius: 2em;color: #fff;text-align: center">
+                            提现
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size: 12px;color: #fff;padding: 0 12px;text-align: center;margin-bottom: 20px">
+                红包已放至地址：
+                <div style="margin-bottom: 4px;margin-top: 4px">
+                    <span style="color:#ffeca0; " @click="out">
+                        {{addr}}
+                        <span style="border-bottom: 1px solid #ffeca0">
+                            修改 >
+                        </span>
+                    </span>
+                </div>
+                <div style="margin-bottom: 4px">
+                    登陆 App 即可提现
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div v-if="isLogin" style="width: 90%;
+            margin: 0 auto;">
+        <div class="order">
+            <div style="margin: 0 auto;width: 140px">
+                <div class="txt">看朋友们手气如何</div>
+            </div>
+        </div>
+        <div style="font-size: 12px;color: #ffffff;margin-bottom: 10px;margin-left: 14px;">
+            已领取{{(model.list.count-model.list.lastCount).toFixed(0)}}/{{model.list.count}}个，共{{(model.list.sum-model.list.lastSum).toFixed(2)}}/{{model.list.sum}}
+            Hebe
+        </div>
+        <div v-if="model.detail" v-for="i in model.detail"
+             style="margin-left: 14px;margin-right: 14px;margin-bottom: 10px">
+            <span style="color:#ffeca0; ">
+                {{addrFn(i.addrName)}}
+            </span>
+            <span style="color:#ffeca0;float: right">
+                {{i.sum}}
+            </span>
+            <div style="color: #fff;font-size: 12px;margin-top: 4px">
+                {{formatDateTime(i.createAt)}}
+            </div>
+        </div>
+    </div>
+    <div style="width: 90%;
+            margin: 0 auto;margin-bottom: 40px">
+        <div class="order">
+            <div style="margin: 0 auto;width: 76px">
+                <div class="txt">红包规则</div>
+            </div>
+        </div>
+        <div style="color: #fff;margin-left: 10px;font-size: 14px">
+            <div style="float: left;width: 16px">1.</div>
+            红包不是直接发放到区块链上对应的地址
+        </div>
+        <div style="color: #fff;margin-top: 4px;margin-left: 10px;font-size: 14px">
+            <div style="float: left;width: 16px">2.</div>
+            发放的红包需要在 HEBE APP 才能提现
+        </div>
+        <div style="color: #fff;margin-top: 4px;margin-left: 10px;font-size: 14px">
+            <div style="float: left;width: 16px">3.</div>
+            提现红包时的提现地址，只能是领取红包地址
+        </div>
+        <div style="color: #fff;margin-top: 4px;margin-left: 10px;font-size: 14px">
+            <div style="float: left;width: 16px">4.</div>
+            每提现100，收取2%手续费
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            api: "https://api.rmbtrade.com/",
+            isActive: false,
+            cover: false,
+            hb: false,
+            isLogin: false,
+            active: "block",
+            button: "#bbbbbb",
+            txt: '',
+            code: '',
+            model: '',
+            addr: '',
+            detail: ''
+        },
+        methods: {
+            txtBlurFn: function () {
+                if (this.txt.trim() != '') {
+                    this.button = "#2196f3"
+                } else {
+                    this.button = "#bbbbbb"
+                }
+            },
+            shakeFn: function () {
+                this.isActive = true
+                setTimeout(() => {
+                    this.isActive = false
+                    this.isLogin = true;
+                    this.cover = false;
+                    this.hb = false;
+                }, 1000)
+            },
+            loot: function () {
+                axios.get(this.api + 'packet/testAddr?addr=' + this.txt)
+                    .then((response) => {
+                        if (response.data == -1) {
+                            alert("别名/地址不正确")
+                        } else {
+                            this.addr = response.data;
+                            this.load()
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            out: function () {
+                this.detail = ''
+                this.addr = '';
+                this.txt = '';
+                this.button = "#bbbbbb";
+                this.isLogin = false;
+            },
+            load() {
+                this.code = getQueryString("code");
+                axios.get(this.api + 'packet?code=' + this.code)
+                    .then((response) => {
+                        this.model = response.data
+                        if (this.model.list.count) {
+                            if (this.addr != '') {
+                                this.model.detail.forEach(i => {
+                                    if (i.addr == this.addr) {
+                                        this.detail = i;
+                                    }
+                                })
+                                if (this.detail == '') {
+                                    this.cover = true;
+                                    this.hb = true;
+                                    axios.post(this.api + 'packet/loot', {
+                                        "code": this.code,
+                                        "addr": this.addr,
+                                        "addrName": this.txt
+                                    }).then((response) => {
+                                        if (response.data < 0) {
+                                            this.detail = {
+                                                sum: "未抢到"
+                                            };
+                                        }
+                                        this.load()
+                                    }).catch(function (error) {
+                                        console.log(error);
+                                    });
+                                }
+
+                                this.shakeFn()
+                            }
+                        } else {
+                            alert("这个红包不存在")
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            formatDateTime(timeStamp) {
+                let date = new Date(timeStamp);
+                let y = date.getFullYear();
+                let m = date.getMonth() + 1;
+                m = m < 10 ? ('0' + m) : m;
+                let d = date.getDate();
+                d = d < 10 ? ('0' + d) : d;
+                let h = date.getHours();
+                h = h < 10 ? ('0' + h) : h;
+                let minute = date.getMinutes();
+                let second = date.getSeconds();
+                minute = minute < 10 ? ('0' + minute) : minute;
+                second = second < 10 ? ('0' + second) : second;
+                return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+            },
+            formatDateTime2(timeStamp) {
+                let date = new Date(timeStamp);
+                let y = date.getFullYear();
+                let m = date.getMonth() + 1;
+                m = m < 10 ? ('0' + m) : m;
+                let d = date.getDate();
+                d = d < 10 ? ('0' + d) : d;
+                let h = date.getHours();
+                h = h < 10 ? ('0' + h) : h;
+                let minute = date.getMinutes();
+                let second = date.getSeconds();
+                minute = minute < 10 ? ('0' + minute) : minute;
+                second = second < 10 ? ('0' + second) : second;
+                return m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+            },
+            addrFn(addr) {
+                let addrs = addr.split("-")
+                if (addrs.length == 1) {
+                    return addr
+                } else {
+                    return '*' + addrs[1] + '-' + addrs[2] + '-' + addrs[3] + '-' + addrs[4]
+                }
+            }
+        },
+        mounted() {
+            this.load()
+        }
+    })
+
+    window.addEventListener('load', function () {
+        FastClick.attach(document.body);
+    }, false);
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+</script>
+</html>
